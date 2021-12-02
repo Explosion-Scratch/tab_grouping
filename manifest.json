@@ -1,6 +1,6 @@
 {
-    "name": "Group tabs v2",
-    "version": "0.0.1",
+    "name": "Tab grouper",
+    "version": "1.0.0",
     "background": {
         "service_worker": "background.js"
     },
