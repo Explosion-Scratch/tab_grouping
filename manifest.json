@@ -1,0 +1,37 @@
+{
+    "name": "Group tabs v2",
+    "version": "0.0.1",
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": { 
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png",
+        "256": "icon256.png"
+    },
+    "permissions": ["tabs", "tabGroups", "storage"],
+    "manifest_version": 3,
+    "action": {"default_popup": "popup.html"},
+    "options_ui": {
+        "page": "settings.html",
+        "open_in_tab": true
+    },
+    "commands": {
+        "group": {
+          "suggested_key": {
+            "default": "Ctrl+G"
+          },
+          "description": "Group tabs in the current window by domain"
+        },
+        "collapse": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+G"
+          },
+          "description": "Collapse non focused tab groups in the current window"
+        },
+        "ungroup": {
+          "description": "Ungroup all tabs in the current window"
+        }
+    }
+}

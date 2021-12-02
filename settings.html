@@ -1,0 +1,146 @@
+<div id="settings">
+    <h2>Settings</h2>
+    <label><input type="number" id="MIN_TABS" class="inp" min="1" max="20"> The minimum amount of tabs to group</label>
+    <label><input type="checkbox" id="UNGROUP_SMALL" class="inp"> Automatically ungroup tab groups once they get smaller than the minimum amount of tabs per group?</label>
+    <label><input type="checkbox" id="RAINBOW" class="inp"> Should the tab groups be colored in a rainbow? (If not it's random)</label>
+    <label><input type="checkbox" id="RANDOM_OFFSET" data-requires="RAINBOW" class="inp"> Should there be a random offset in the rainbow of coloring? E.g. start at blue, instead of red.</label>
+    <label><input type="checkbox" id="AUTO_GROUP" class="inp"> Automatically group tabs when updated or opened?</label>
+    <label><input type="checkbox" id="COLLAPSE" class="inp"> Automatically collapse groups when grouped</label>
+    <label><input type="checkbox" id="COLLAPSE_WHEN_SWITCHING" class="inp" data-requires="COLLAPSE"> Collapse tab groups when switching tabs?</label>
+    <label><input type="checkbox" id="COLLAPSE_FOCUSED" class="inp"> Collapse the group containing the current tab when collapsing? (Can look a bit weird)</label>
+    <label><input type="checkbox" id="TITLE" class="inp"> Give the groups a title?</label>
+    <span class="section">
+        <span class="section_text">Naming convention:</span>
+        <label><input data-requires="TITLE" type="radio" id="TITLE_NAMING" name="NAMING" value="formatted" checked> Formatted (e.g. Discord, Youtube, Google)</label>
+        <label><input data-requires="TITLE" type="radio" id="TITLE_NAMING" name="NAMING" value="domain"> Domain (e.g. discord.com, youtube.com, google.com)</label>
+    </span>
+    <span class="section">
+        <span class="section_text">How to capitalize group names?</span>
+        <label><input data-requires="TITLE" type="radio" id="CAPS" name="CAPS_SETTING" value="caps" checked> Capitalize the first letter ("Youtube")</label>
+        <label><input data-requires="TITLE" type="radio" id="CAPS" name="CAPS_SETTING" value="lowercase"> Lowercase everything ("youtube")</label>
+        <label><input data-requires="TITLE" type="radio" id="CAPS" name="CAPS_SETTING" value="uppercase"> Capitalize everything ("YOUTUBE")</label>
+    </span>
+</div>
+<script src="settings.js"></script>
+<style>
+    label {display: block}
+    
+    *:focus {outline: none}
+    h2 {
+        font-weight: 600;
+        color: #444;
+        text-align: center;
+        width: 100%;
+    }
+    body {
+        background-color: #111927;
+        background-image: 
+            radial-gradient(at 17% 23%, hsl(162.00, 77%, 40%) 0, transparent 59%), 
+            radial-gradient(at 82% 65%, hsl(218.30, 45%, 20%) 0, transparent 55%);    
+    }
+    #settings {
+        overflow-y: scroll;
+        font-size: .9rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        width: clamp(300px, 80vw, 700px);
+        height: clamp(300px, 80vh, 700px);
+        color: #111;
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 12px;
+        padding: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.125);
+        accent-color: lightgreen;
+    }
+    .section {
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 8px;
+        background: #fff3;
+    }
+    .section_text {
+        font-weight: 600;
+    }
+    label {
+        padding: 8px;
+        display: flex;
+        align-items: center;
+    }
+    
+    #MIN_TABS {
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        width: 40px;
+        margin-right: 6px;
+    }
+    
+    .form-switch {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+    .form-switch input:disabled + i {
+        opacity: .5;
+        filter: grayscale(100%);
+        cursor: not-allowed;
+    }
+.form-switch i {
+    transform: scale(.7);
+  position: relative;
+  display: inline-block;
+  margin-right: .5rem;
+  width: 46px;
+  height: 26px;
+  background-color: #e6e6e6;
+  border-radius: 23px;
+  vertical-align: text-bottom;
+  transition: all 0.3s linear;
+}
+
+.form-switch i::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 42px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 11px;
+  transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+  transition: all 0.25s linear;
+}
+
+.form-switch i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 11px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+  transform: translate3d(2px, 2px, 0);
+  transition: all 0.2s ease-in-out;
+}
+
+.form-switch:active i::after {
+  width: 28px;
+  transform: translate3d(2px, 2px, 0);
+}
+
+.form-switch:active input:checked + i::after { transform: translate3d(16px, 2px, 0); }
+
+.form-switch input { display: none; }
+
+.form-switch input:checked + i { background-color: #4BD763; }
+
+.form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
+
+.form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }
+</style>
